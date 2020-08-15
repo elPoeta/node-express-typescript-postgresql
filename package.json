@@ -1,0 +1,27 @@
+{
+  "name": "express-typescript-postgresql",
+  "version": "1.0.0",
+  "description": "node with typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elPoeta/node-express-typescript-postgresql.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "typescript",
+    "postgres"
+  ],
+  "author": "Leonardo Tosetto (leonardo.a.tosetto@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elPoeta/node-express-typescript-postgresql/issues"
+  },
+  "homepage": "https://github.com/elPoeta/node-express-typescript-postgresql#readme"
+}
