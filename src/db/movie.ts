@@ -12,3 +12,14 @@ export const fetchMovies = async (): Promise<MovieDB> => {
     return data;
 }
 
+export const insertMovie = async (dataMovie: any): Promise<any> => {
+    const client: PoolClient = await pool.connect();
+    const movie: QueryResult | any = await client.query('INSERT INTO movie (info) values($1)', [dataMovie])
+        .catch(e => { return { error: true, message: `${e}`, data: 0 } })
+        .finally(() => client.release());
+    const data = movie.rowCount !== undefined ?
+        { error: false, message: "Ok", data: movie.rowCount } :
+        movie;
+    return data;
+}
+
