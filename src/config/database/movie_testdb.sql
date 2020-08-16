@@ -1,10 +1,10 @@
+DROP DATABASE IF EXISTS movie_testdb; 
 CREATE DATABASE movie_testdb;
-
+DROP TABLE IF EXISTS movie;
 CREATE TABLE movie (
   id serial primary key,
-  movies jsonb default '{}'::jsonb
+  info jsonb default '{}'::jsonb
 );
-
-INSERT INTO movie (movies)
-VALUES('{ "title": "Matrix", "genre": ["sc-fi", "action"], "year": 1999, "directors":["Lilly Wachowski", "Lana Wachowski"] }'),
-VALUES('{ "title": "The fellowship of the ring", "genre": ["adventure", "fantasy"], "year": 2001, "directors":["Peter Jackson"] }');
+INSERT INTO movie (info)
+VALUES('{ "title": "Matrix", "genre": [{"name":"sc-fi"}, {"name":"action"}], "year": 1999, "directors":[{"firstName":"Lilly", "lastName":"Wachowski"}, {"firstName":"Lana", "lastName":"Wachowski"}] }'),
+('{ "title": "The fellowship of the ring", "genre": [{"name":"adventure"}, {"name":"fantasy"}], "year": 2001, "directors":[{"firstName":"Peter", "lastName":"Jackson"}] }');
