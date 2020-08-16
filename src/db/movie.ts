@@ -3,12 +3,14 @@ import { QueryResult } from 'pg';
 
 export const getMovies = async (): Promise<any[] | any> => {
     const client = await pool.connect();
-
-    const movies: QueryResult | any = await client.query('SELECT * FROM movie', [])
-        .catch(e => { })
-        .finally(() => client.release());
-
-    return Array.isArray(movies.rows) ? movies.rows : movies;
+    try {
+        const movies: QueryResult = await client.query('SELECT * FROM movie', []);
+        return await movies.rows;
+    } catch (error) {
+        return new Error(`Error get movies ${error}`);
+    } finally {
+        client.release();
+    }
 
 }
 
