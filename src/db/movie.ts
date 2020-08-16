@@ -1,13 +1,13 @@
 import { pool } from './connection';
-import { QueryResult } from 'pg';
+import { QueryResult, PoolClient } from 'pg';
 
-export const getMovies = async (): Promise<any[] | any> => {
-    const client = await pool.connect();
+export const fetchMovies = async (): Promise<any[]> => {
+    const client: PoolClient = await pool.connect();
     try {
         const movies: QueryResult = await client.query('SELECT * FROM movie', []);
-        return await movies.rows;
+        return movies.rows;
     } catch (error) {
-        return new Error(`Error get movies ${error}`);
+        return []
     } finally {
         client.release();
     }
